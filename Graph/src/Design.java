@@ -82,7 +82,7 @@ public class Design extends JFrame implements ActionListener {
      * Також передбачає інформування користувача у разі введення некоректних даних
      * @param e the event to be processed
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
         if (e.getActionCommand().equals("Намалювати графік")) {
             try {
                 A = Double.valueOf(inputA.getText());
@@ -103,7 +103,7 @@ public class Design extends JFrame implements ActionListener {
                         this.repaint();
                     }
                 }
-            } catch (NumberFormatException exception) {
+            }catch (NumberFormatException exception){
                 JOptionPane.showMessageDialog(this, "Одне з введених значень некоректне або є незаповнене поле", "ПОМИЛКА", JOptionPane.ERROR_MESSAGE);
             }
         }else if(e.getActionCommand().equals("Зберегти графік")){
@@ -115,7 +115,7 @@ public class Design extends JFrame implements ActionListener {
                 ImageIO.write(bi,"png",new File("graph"+counter+".png"));
                 counter++;
                 JOptionPane.showMessageDialog(this,"Графік успішно збережено!");
-            }catch (Exception ex) {
+            }catch (Exception ex){
                 System.out.println("ПОМИЛКА");
             }
         }
