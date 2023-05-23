@@ -56,6 +56,14 @@ public class GraphPanel extends Panel {
             g2.drawString((i*this.A/20)+"π",305,303-20*i);
         }
 
+        g2.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+        g2.drawString("R1(φ) = A sin (B φ)", 460, 470);
+        g2.drawString("R2(φ) = A (1+cos(φ))", 460, 490);
+        g2.drawString("A ="+this.A, 460, 510);
+        g2.drawString("B ="+this.B, 460, 530);
+        g2.drawString("Діапазон: "+this.alpha+" - "+this.beta, 460, 550);
+        g2.drawString("Крок: "+this.step, 460, 570);
+
         g2.setFont(new Font("Times New Roman",Font.BOLD,10));
         g2.drawString("X",580,285);
         g2.drawString("Y",286,20);
@@ -90,10 +98,10 @@ public class GraphPanel extends Panel {
         g2.setStroke(new BasicStroke(2f));
 
         for(double i=(Math.PI*step/180)+this.alpha/180*Math.PI; i<= this.beta/180*Math.PI; i=i+Math.PI*step/180){
-            double x1 = (this.A*Math.sin(this.B*(i-Math.PI*step/180))*Math.cos(i-Math.PI*step/180))*400/(Math.PI*this.A)+300;
-            double y1 = 300-((this.A*Math.sin(this.B*(i-Math.PI*step/180))*Math.sin(i-Math.PI*step/180))*400/(Math.PI*this.A));
-            double x2 = (this.A*Math.sin(this.B*i)*Math.cos(i))*400/(Math.PI*this.A)+300;
-            double y2 = 300-((this.A*Math.sin(this.B*i)*Math.sin(i))*400/(Math.PI*this.A));
+            double x1 = (this.A*Math.sin(this.B*(i-Math.PI*step/180))*Math.cos(i-Math.PI*step/180))*400/(Math.PI*Math.abs(this.A))+300;
+            double y1 = 300-((this.A*Math.sin(this.B*(i-Math.PI*step/180))*Math.sin(i-Math.PI*step/180))*400/(Math.PI*Math.abs(this.A)));
+            double x2 = (this.A*Math.sin(this.B*i)*Math.cos(i))*400/(Math.PI*Math.abs(this.A))+300;
+            double y2 = 300-((this.A*Math.sin(this.B*i)*Math.sin(i))*400/(Math.PI*Math.abs(this.A)));
             Line2D flower = new Line2D.Double(x1,y1,x2,y2);
             g2.draw(flower);
         }
@@ -102,10 +110,10 @@ public class GraphPanel extends Panel {
         g2.setStroke(new BasicStroke(2f));
 
         for(double i=(Math.PI*step/180)+this.alpha/180*Math.PI; i<= this.beta/180*Math.PI; i=i+Math.PI*step/180){
-            double x1 = (this.A*(1+Math.cos(i-Math.PI*step/180))*Math.cos(i-Math.PI*step/180))*400/(Math.PI*this.A)+300;
-            double y1 = 300-((this.A*(1+Math.cos(i-Math.PI*step/180))*Math.sin(i-Math.PI*step/180))*400/(Math.PI*this.A));
-            double x2 = (this.A*(1+Math.cos(i))*Math.cos(i))*400/(Math.PI*this.A)+300;
-            double y2 = 300-((this.A*(1+Math.cos(i))*Math.sin(i))*400/(Math.PI*this.A));
+            double x1 = (this.A*(1+Math.cos(i-Math.PI*step/180))*Math.cos(i-Math.PI*step/180))*400/(Math.PI*Math.abs(this.A))+300;
+            double y1 = 300-((this.A*(1+Math.cos(i-Math.PI*step/180))*Math.sin(i-Math.PI*step/180))*400/(Math.PI*Math.abs(this.A)));
+            double x2 = (this.A*(1+Math.cos(i))*Math.cos(i))*400/(Math.PI*Math.abs(this.A))+300;
+            double y2 = 300-((this.A*(1+Math.cos(i))*Math.sin(i))*400/(Math.PI*Math.abs(this.A)));
             Line2D cardioid = new Line2D.Double(x1,y1,x2,y2);
             g2.draw(cardioid);
         }
